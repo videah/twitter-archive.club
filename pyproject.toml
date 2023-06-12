@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "twitter-archive-club"
+version = "0.1.0"
+description = ""
+authors = ["videah <videah@selfish.systems>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = { extras = ["async"], version = "^2.3.2" }
+gunicorn = "^20.1.0"
+twscrape = { git = "https://github.com/videah/twscrape.git" }
+asyncio = "^3.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
