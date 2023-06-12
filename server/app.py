@@ -1,6 +1,8 @@
 import asyncio
+import logging
+
 from flask import Flask, render_template, request
-from twscrape import AccountsPool, API, gather
+from twscrape import AccountsPool, API
 from twscrape.logger import set_log_level
 
 loop = asyncio.get_event_loop()
@@ -53,3 +55,8 @@ if __name__ == '__main__':
     set_log_level('DEBUG')
     loop.run_until_complete(setup_accounts())
     app.run(host='0.0.0.0')
+
+if __name__ != '__main__':
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
